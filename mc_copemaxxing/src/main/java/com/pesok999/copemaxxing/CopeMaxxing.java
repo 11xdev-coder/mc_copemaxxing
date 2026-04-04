@@ -1,6 +1,7 @@
 package com.pesok999.copemaxxing;
 
 import com.mojang.logging.LogUtils;
+import com.pesok999.copemaxxing.client.FreeLookEventHandler;
 import com.pesok999.copemaxxing.client.KeyBindings;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -25,6 +26,7 @@ public class CopeMaxxing
     public CopeMaxxing()
     {
         KeyBindings.register();
+        FreeLookEventHandler.register();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)

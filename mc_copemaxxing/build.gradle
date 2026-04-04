@@ -115,8 +115,3 @@ sourceSets.each {
     it.output.resourcesDir = dir
     it.java.destinationDirectory = dir
 }
-
-tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8'
-    options.compilerArgs += ['-AdefaultObfuscationEnv=named']
-}
