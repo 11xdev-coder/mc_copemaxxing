@@ -44,7 +44,6 @@ public class FreeLookEventHandler {
                 mc.player.setXRot(FreeLookState.savedPlayerPitch);
                 mc.player.xRotO = FreeLookState.savedPlayerPitch;
                 mc.player.setYHeadRot(FreeLookState.savedPlayerYaw);
-                mc.player.setYBodyRot(FreeLookState.savedPlayerYaw);
 
                 mc.options.setCameraType(CameraType.FIRST_PERSON);
             }
@@ -71,7 +70,6 @@ public class FreeLookEventHandler {
 
             // Lock head/body after AI has finished updating them this tick.
             mc.player.setYHeadRot(FreeLookState.savedPlayerYaw);
-            mc.player.setYBodyRot(FreeLookState.savedPlayerYaw);
         }
     }
 
@@ -93,7 +91,6 @@ public class FreeLookEventHandler {
         mc.player.xRotO = FreeLookState.cameraPitch;
 
         mc.player.setYHeadRot(FreeLookState.savedPlayerYaw);
-        mc.player.setYBodyRot(FreeLookState.savedPlayerYaw);
         // xRot stays as cameraPitch here — head pitch is handled in RenderPlayerEvent below
     }
 
