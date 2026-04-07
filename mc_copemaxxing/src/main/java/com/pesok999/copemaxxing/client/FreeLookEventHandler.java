@@ -17,7 +17,7 @@ public class FreeLookEventHandler {
     @SubscribeEvent
     public void onClientTick(TickEvent.ClientTickEvent event) {
         Minecraft mc = Minecraft.getInstance();
-        if (mc.level == null || mc.player == null) return;
+        if (mc.level == null || mc.player == null || mc.getCameraEntity() != mc.player) return;
 
         if (event.phase == TickEvent.Phase.START) {
             boolean isKeyHeld = KeyBindings.FREE_LOOK.isDown();
@@ -77,7 +77,7 @@ public class FreeLookEventHandler {
     public void onComputeCameraAngles(ViewportEvent.ComputeCameraAngles event) {
         if (!FreeLookState.isActive) return;
         Minecraft mc = Minecraft.getInstance();
-        if (mc.player == null) return;
+        if (mc.player == null || mc.getCameraEntity() != mc.player) return;
 
         FreeLookState.cameraYaw = mc.player.getYRot();
         FreeLookState.cameraPitch = Mth.clamp(mc.player.getXRot(), -90f, 90f);
@@ -97,7 +97,9 @@ public class FreeLookEventHandler {
     @SubscribeEvent
     public void onRenderPlayerPre(RenderPlayerEvent.Pre event) {
         if (!FreeLookState.isActive) return;
-        if (event.getEntity() != Minecraft.getInstance().player) return;
+
+        Minecraft mc = Minecraft.getInstance();
+        if (event.getEntity() != mc.player || mc.getCameraEntity() != mc.player) return;
 
         // Swap xRot to savedPlayerPitch just for this render — head stays still
         event.getEntity().setXRot(FreeLookState.savedPlayerPitch);
@@ -107,7 +109,9 @@ public class FreeLookEventHandler {
     @SubscribeEvent
     public void onRenderPlayerPost(RenderPlayerEvent.Post event) {
         if (!FreeLookState.isActive) return;
-        if (event.getEntity() != Minecraft.getInstance().player) return;
+
+        Minecraft mc = Minecraft.getInstance();
+        if (event.getEntity() != mc.player|| mc.getCameraEntity() != mc.player) return;
 
         // Restore cameraPitch so the next frame's turnPlayer() adds delta correctly
         event.getEntity().setXRot(FreeLookState.cameraPitch);

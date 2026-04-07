@@ -12,7 +12,14 @@ public class KeyBindings {
             "key.mc_copemaxxing.free_look", // translation key
             InputConstants.Type.KEYSYM,
             GLFW.GLFW_KEY_LEFT_ALT, // default key left alt
-            "key.categories.freelook"
+            "key.categories.copemaxxing"
+    );
+
+    public static final KeyMapping FREE_CAM = new KeyMapping(
+            "key.mc_copemaxxing.free_cam",
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_V, // V
+            "key.categories.copemaxxing"
     );
 
     public static void register() {
@@ -22,5 +29,6 @@ public class KeyBindings {
 
     public static void onRegisterKeyMappings(RegisterKeyMappingsEvent event) {
         event.register(FREE_LOOK);
+        event.register(FREE_CAM);
     }
 }
