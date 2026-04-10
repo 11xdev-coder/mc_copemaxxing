@@ -1,8 +1,6 @@
 {
-  "required": true,
   "package": "com.pesok999.copemaxxing.mixin",
   "compatibilityLevel": "JAVA_17",
-  "client": [],
-  "minVersion": "0.8",
-  "refmap": "mixins.copemaxxing.refmap.json"
+  "mixins": [],
+  "minVersion": "0.8"
 }

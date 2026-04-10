@@ -27,6 +27,8 @@ minecraft {
 
         client {
             property 'forge.enabledGameTestNamespaces', mod_id
+            property 'mixin.config', 'mixins.mc_copemaxxing.json'
+            args '--mixin', 'mixins.mc_copemaxxing.json'
         }
 
         server {

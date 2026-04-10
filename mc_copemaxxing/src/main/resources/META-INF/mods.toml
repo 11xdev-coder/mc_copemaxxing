@@ -37,4 +37,4 @@ description='''${mod_description}'''
     ordering="NONE"
     side="BOTH"
 [[mixins]]
-    config="mixins.${mod_id}.json"
+    config="mixins.mc_copemaxxing.json"
